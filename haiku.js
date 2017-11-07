@@ -1,26 +1,41 @@
-var fs = require("fs");
-var dictionary = require('./formatData')
+//var dictionary = require('./formatData')
+var bibleDictionary = require('./compare')
 
-console.log(dictionary)
-//can't access values at keys
-// need to add random val generator
+console.log(bibleDictionary)
+var random = function(arrLength){
+  return Math.floor(Math.random() * arrLength);
+}
+
 
 function createHaiku(structure){
   var haiku = ''
 
   structure[0].forEach(function(elem) {
-    haiku += dictionary[elem]
+    console.log(bibleDictionary[elem].length)
+    var size = bibleDictionary[elem].length;
+    var randomGen = random(size);
+    haiku += bibleDictionary[elem][randomGen] + "  "
   });
+
+  haiku += "\n"
 
   structure[1].forEach(function(elem) {
-    haiku += dictionary[elem]
+    var size = bibleDictionary[elem].length;
+    var randomGen = random(size);
+    haiku += bibleDictionary[elem][randomGen] + "  "
   });
 
+  haiku += "\n"
+
   structure[2].forEach(function(elem) {
-    haiku += dictionary[elem]
+    var size = bibleDictionary[elem].length;
+    var randomGen = random(size);
+    haiku += bibleDictionary[elem][randomGen] + "  "
   });
-  console.log(haiku)
-  console.log("this should log a haiku with the structure " + structure);
+
+  //console.log(haiku)
+  return haiku
+
 }
 
   // structure
@@ -28,10 +43,8 @@ function createHaiku(structure){
   // [[2,3][1,3,3][3,2]]
   // [[3,2][2,2,3][2,3]]
 
-createHaiku([[5],[7],[5]], dictionary)
+createHaiku([[5],[7],[5]], bibleDictionary)
 
-module.exports = {
+module.exports =
   createHaiku
-};
-
-
+;

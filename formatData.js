@@ -1,4 +1,5 @@
 var fs = require("fs");
+var common = require('./compare.js')
 var cmudictFile = readCmudictFile('./cmudict.txt');
 
 function readCmudictFile(file){
@@ -7,13 +8,13 @@ function readCmudictFile(file){
 
 function formatData(data){
   var vowels = ['A','E','I','O','U','Y', ]
-  var syllablesArr = []
+  //var syllablesArr = []
 
 
   //should obj be pulled out into a seperate function?
   var obj = {}
 
-  for(var i =0; i<11; i++){
+  for (var i =0; i<11; i++){
     obj[i] = [];
   }
 
@@ -36,9 +37,9 @@ function formatData(data){
     });
 
 
-    if (!lineSplit[1].match(/\d/)) {
-      obj[0].push(lineSplit[0]);
-    }
+    // if (!lineSplit[1].match(/\d/)) {
+    //   obj[0].push(lineSplit[0]);
+    // }
     obj[syls.length].push(lineSplit[0])
   });
 
@@ -48,7 +49,6 @@ function formatData(data){
 }
 
 var dictionary = formatData(cmudictFile);
+//console.log(dictionary[0])
+module.exports = dictionary
 
-module.exports = {
-  dictionary
-}
