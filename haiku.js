@@ -11,8 +11,11 @@ function createHaiku(structure){
   var haiku = ''
 
   structure[0].forEach(function(elem) {
+
+    // can console.log length, but cant store it in a var.. WHY???
     console.log(bibleDictionary[elem].length)
     var size = bibleDictionary[elem].length;
+    console.log(size)
     var randomGen = random(size);
     haiku += bibleDictionary[elem][randomGen] + "  "
   });
